@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Footer from './Components/footer/footer';
+import Main from './Components/main/main';
+import Devices from './Components/Devices/devices';
+import ToBookContainer from './Components/ToBook/ToBookContainer';
+import HeaderContainer from './Components/header/headerContainer';
+import BasketContainer from './Components/Basket/BasketContainer';
+import RegistrationContainer from './Components/Registration/RegistrationContainer';
+import Login from './Components/Login/Login';
+import ProfileContainer from './Components/Profile/ProfileContainer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <HeaderContainer/>
+        <Routes>
+          <Route path='/' element={<Main />} />
+          <Route path='/tobook' element={<ToBookContainer/>} />
+          <Route path='/devices' element={<Devices />} />
+          <Route path='/basket' element={<BasketContainer />} />
+          <Route path='/register' element={<RegistrationContainer />} />
+          <Route path='/login' element={<Login/>} />
+          <Route path='/profile' element={<ProfileContainer/>} />
+        </Routes>
+        <Footer/>
+      </div>
+    </BrowserRouter>
   );
 }
 
