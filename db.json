@@ -29,24 +29,67 @@
       "description": "С 22:00 - 8:00, день и ночь, день и ночь!"
     }
   ],
-  "orders": [],
-  "users": [
+  "orders": [
     {
-      "email": "aidana@gmail.com",
-      "password": "$2a$10$LBINclqd8h9vTkhpN47esOvqcEbujJAIuzX0XgqxqW4RfSmr1m1pq",
-      "name": "aydana",
-      "surname": "Ikembaeva",
-      "phone": "8707654213",
-      "urlImg": "https://klike.net/uploads/posts/2022-08/1661941620_j-4.jpg",
+      "orderData": [
+        {
+          "id": 2,
+          "name": "3+2 hours",
+          "price": "1800",
+          "img": "https://art.kartinkof.club/uploads/posts/2023-06/1685773856_art-kartinkof-club-p-cs-go-arti-36.jpg",
+          "description": "Что-то на геймерском, хэхэ",
+          "count": 3
+        },
+        {
+          "id": 3,
+          "name": "День",
+          "price": "2100",
+          "img": "https://art.kartinkof.club/uploads/posts/2023-06/1685773865_art-kartinkof-club-p-cs-go-arti-57.jpg",
+          "description": "С 8:00 - 18:00, границы не, не слышал",
+          "count": 1
+        }
+      ],
+      "datetime": "2024-07-03T08:51:42.761Z",
       "id": 1
     },
     {
-      "email": "dosya@gmail.ru",
-      "password": "$2a$10$RvfxqBG9fJq1ziRrkaFcIuRHgM4CgFmV6El97U/gKH6AXUyuh.QLG",
-      "name": "sdsdsdsfdf",
-      "surname": "dffdfdfd",
-      "phone": "5444848484",
-      "urlImg": null,
+      "orderData": [
+        {
+          "id": 3,
+          "name": "День",
+          "price": "2100",
+          "img": "https://art.kartinkof.club/uploads/posts/2023-06/1685773865_art-kartinkof-club-p-cs-go-arti-57.jpg",
+          "description": "С 8:00 - 18:00, границы не, не слышал",
+          "count": 2
+        },
+        {
+          "id": 4,
+          "name": "Ночь",
+          "price": "2800",
+          "img": "https://3dnews.ru/assets/external/illustrations/2021/07/07/1043725/p1_2523513_3c75d02c.jpg",
+          "description": "С 22:00 - 8:00, день и ночь, день и ночь!",
+          "count": 1
+        }
+      ],
+      "datetime": "2024-07-03T08:53:21.537Z",
+      "id": 2
+    }
+  ],
+  "users": [
+    {
+      "email": "dosya0407@mail.ru",
+      "password": "$2a$10$od407bxwXvzcMY0MlKVYA.7qDzsQErw5iPV8.pKeZUosm9NcZ8WpW",
+      "name": "Dosya",
+      "surname": null,
+      "phone": null,
+      "id": 1
+    },
+    {
+      "email": "ablabla4@gmail.com",
+      "password": "$2a$10$SPc9Lf2FwjZtyC79NPf6iOpZvyAoX2YeB/JM.F6KHXvqxtnTNgURK",
+      "name": "Aloka",
+      "surname": "Muvit",
+      "phone": "87756982341",
       "id": 2
     }
   ]
