@@ -21,6 +21,7 @@ import { useEffect, useState } from 'react';
             setTotalPrice(total);
         }
         const handleConfirmOrder = () => {
+            debugger
             props.postOrders(props.basket)
             localStorage.removeItem('basket');
             navigate("/")

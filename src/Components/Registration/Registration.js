@@ -50,10 +50,10 @@ let Registration =(props)=>{
     const emailHandler = (e) => {
         setEmail(e.target.value);
         setNewUser(prev => ({...prev, email: e.target.value}))
-        const re = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+        const re = /^\w{7,}@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
         if (!re.test(String(e.target.value).toLowerCase())) {
-            setEmailError("Некорректный Email");
+            setEmailError("Некорректный Email, логин должен содержать больше 6 символов");
         } else {
             setEmailError('');
         }
@@ -152,7 +152,7 @@ let Registration =(props)=>{
                     <input onBlur={ e => blurHandler(e)} value={email} name='email' type="text" placeholder="Email" onChange={e => emailHandler(e)} />
                     {(passwordDirty &&passwordError) && <div style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '65%', marginLeft: '15px'}}>{passwordError}</div>}
                     <div className='input_password'>
-                        <input className='input_svg' onBlur={ e => blurHandler(e)} value={password} name='password' type={eyes ? "text" : "password"} placeholder="Password" onChange={e => passwordHandler(e)} />
+                        <input className='input_svg' onBlur={ e => blurHandler(e)} value={password} name='password' type={eyes ? "text" : "password"} placeholder="Password" autoComplete='off' onChange={e => passwordHandler(e)} />
                         {
                             eyes ? (
                                 <span onClick={()=>(setEyes(false))}><FaEye /></span>

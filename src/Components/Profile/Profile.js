@@ -14,11 +14,10 @@ let Profile = ({authUser})=>{
                             <div className="profile-down">
                                 <div className="first-side">
                                     <div className="image-profile">
-                                        <img src={userData.urlImg ? (userData.urlImg) : ("https://i1.wp.com/www.iconspng.com/uploads/abstract-user-icon-3/abstract-user-icon-3.png")}></img>
+                                        <img src={userData.urlImg ? (userData.urlImg) : ("https://webstockreview.net/images/neck-clipart-oval-face-11.png")}></img>
                                     </div>
                                     <div className="name-profile">
-                                        <p>{userData.name}</p>
-                                        <p>{userData.surname}</p>
+                                        <p>{userData.name + ' ' + userData.surname}</p>
                                     </div>
                                     <div className="location-profile">
                                         <div className="location-dev">

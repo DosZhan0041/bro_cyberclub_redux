@@ -113,8 +113,17 @@ let ToBookReducer  = (state=initialState, action)=>{
         }
 
         case POST_ORDERS: {
+            const userData = JSON.parse(localStorage.getItem('user'))
+            let today = new Date(),
+            date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            let time = String(today.getHours()).padStart(2, '0') + ":" + String(today.getMinutes()).padStart(2, '0') + ":" + String(today.getSeconds()).padStart(2, '0');
+
             const orderAndData = {orderData: action.orderData,
-            datetime: new Date()
+            datetime: date + ' | ' + time,
+            userName: userData.name,
+            userSurname: userData.surname,
+            userId: userData.id,
+            userNumber: userData.phone
             }
             fetch("http://localhost:8080/orders", {
                 method: 'POST',

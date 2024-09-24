@@ -3,28 +3,28 @@
     {
       "id": 1,
       "name": "2+1 hours",
-      "img": "https://sun9-25.userapi.com/impg/VXZO_v1yDiiU0Z1_-VfSCELX6tBp_kTgaegzqA/4JG_nxstuCE.jpg?size=1375x804&quality=96&sign=0c25816a6a4f352fa396f1a4a2888770&c_uniq_tag=l-C1BsOZrXb-yOmem8n-vni9FHek4Qxxj4-ee6ZD0Bg&type=album",
+      "img": "https://i.pinimg.com/originals/82/f3/e1/82f3e1a1cc4f868d3ec3a06e88d2d4b4.jpg",
       "price": "1200",
       "description": "Минимум минимум стресса!"
     },
     {
       "id": 2,
       "name": "3+2 hours",
-      "img": "https://art.kartinkof.club/uploads/posts/2023-06/1685773856_art-kartinkof-club-p-cs-go-arti-36.jpg",
+      "img": "https://avatars.mds.yandex.net/i?id=75e829ba6ab8202aca3fb19944f81d5a_l-10329490-images-thumbs&n=13",
       "price": "1800",
       "description": "Что-то на геймерском, хэхэ"
     },
     {
       "id": 3,
       "name": "День",
-      "img": "https://art.kartinkof.club/uploads/posts/2023-06/1685773865_art-kartinkof-club-p-cs-go-arti-57.jpg",
+      "img": "https://steamuserimages-a.akamaihd.net/ugc/2505766312233070089/41D0E5B0C832349960AE66B98CFF140E2C16F6CB/?imw=512&amp;imh=288&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true",
       "price": "2100",
       "description": "С 8:00 - 18:00, границы не, не слышал"
     },
     {
       "id": 4,
       "name": "Ночь",
-      "img": "https://3dnews.ru/assets/external/illustrations/2021/07/07/1043725/p1_2523513_3c75d02c.jpg",
+      "img": "https://pic.rutubelist.ru/video/2b/34/2b342d9e1e597e76ada0bc8e13a6e34f.jpg",
       "price": "2800",
       "description": "С 22:00 - 8:00, день и ночь, день и ночь!"
     }
@@ -36,61 +36,43 @@
           "id": 2,
           "name": "3+2 hours",
           "price": "1800",
-          "img": "https://art.kartinkof.club/uploads/posts/2023-06/1685773856_art-kartinkof-club-p-cs-go-arti-36.jpg",
+          "img": "https://avatars.mds.yandex.net/i?id=75e829ba6ab8202aca3fb19944f81d5a_l-10329490-images-thumbs&n=13",
           "description": "Что-то на геймерском, хэхэ",
-          "count": 3
-        },
-        {
-          "id": 3,
-          "name": "День",
-          "price": "2100",
-          "img": "https://art.kartinkof.club/uploads/posts/2023-06/1685773865_art-kartinkof-club-p-cs-go-arti-57.jpg",
-          "description": "С 8:00 - 18:00, границы не, не слышал",
-          "count": 1
-        }
-      ],
-      "datetime": "2024-07-03T08:51:42.761Z",
-      "id": 1
-    },
-    {
-      "orderData": [
-        {
-          "id": 3,
-          "name": "День",
-          "price": "2100",
-          "img": "https://art.kartinkof.club/uploads/posts/2023-06/1685773865_art-kartinkof-club-p-cs-go-arti-57.jpg",
-          "description": "С 8:00 - 18:00, границы не, не слышал",
           "count": 2
         },
         {
-          "id": 4,
-          "name": "Ночь",
-          "price": "2800",
-          "img": "https://3dnews.ru/assets/external/illustrations/2021/07/07/1043725/p1_2523513_3c75d02c.jpg",
-          "description": "С 22:00 - 8:00, день и ночь, день и ночь!",
+          "id": 1,
+          "name": "2+1 hours",
+          "price": "1200",
+          "img": "https://i.pinimg.com/originals/82/f3/e1/82f3e1a1cc4f868d3ec3a06e88d2d4b4.jpg",
+          "description": "Минимум минимум стресса!",
           "count": 1
         }
       ],
-      "datetime": "2024-07-03T08:53:21.537Z",
-      "id": 2
+      "datetime": "2024-9-25 | 01:20:08",
+      "userName": "Doszhan",
+      "userSurname": "Ilyassov",
+      "userId": 1,
+      "userNumber": "87076877121",
+      "id": 1
     }
   ],
   "users": [
     {
-      "email": "dosya0407@mail.ru",
-      "password": "$2a$10$od407bxwXvzcMY0MlKVYA.7qDzsQErw5iPV8.pKeZUosm9NcZ8WpW",
-      "name": "Dosya",
-      "surname": null,
-      "phone": null,
+      "email": "dosikiliasov@gmail.ru",
+      "password": "$2a$10$uWBTKQkeOU1sfjT3wB85cO9FNshRRB9oWwX0/P3V1KdeWsSNz3Dua",
+      "name": "Doszhan",
+      "surname": "Ilyassov",
+      "phone": "87076877121",
       "id": 1
     },
     {
-      "email": "ablabla4@gmail.com",
-      "password": "$2a$10$SPc9Lf2FwjZtyC79NPf6iOpZvyAoX2YeB/JM.F6KHXvqxtnTNgURK",
-      "name": "Aloka",
-      "surname": "Muvit",
-      "phone": "87756982341",
-      "id": 2
+      "email": "dosyaaa@gmail.ru",
+      "password": "$2a$10$ynJjqYulqm4qlG5bgg8LrOLmJ3m7.CNIE0GIB8cmJzbQ6eXbPYpE2",
+      "name": "Doszhan",
+      "surname": "Bauyrzhanuly",
+      "phone": "8707789456",
+      "id": 6
     }
   ]
 }
