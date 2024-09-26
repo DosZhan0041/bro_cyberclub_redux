@@ -1222,6 +1222,7 @@ nav ul li:nth-child(5){
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .image-profile img{
@@ -1261,6 +1262,107 @@ nav ul li:nth-child(5){
   justify-content: center;
 }
 
+.profile-edit{
+  width: 100%;
+  height: 70%;
+  position: relative;
+  top: -75px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-data-edit > input{
+  width: 25%;
+  height: 15%;
+  font-size: 20px;
+  border-radius: 15px; 
+  padding: 10px;
+  outline: none;
+  transition: border-color 0.3s;
+  border: 1px solid rgba(128, 0, 128, 0.379);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-data-edit > input:focus{
+  border-color: rgba(128, 0, 128, 0.66);
+  box-shadow: 0 0 8px rgba(128, 0, 128, 0.5);
+}
+
+.profile-data-edit{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.profile-button-photo{
+  border-radius: 50%;
+  border: transparent;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.camera-icon{
+  opacity: 1 !important;
+  width: 80px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  position: absolute;
+  height: 80px !important;
+  filter: invert(100%);
+  z-index: 3;
+}
+
+.profile-edit>.image-profile img{
+  opacity: 0.5;
+  width: 150px;
+}
+
+.profile-edit>.image-profile{
+  height: 30%;
+}
+
+.profile-edit-buttons{
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.profile-edit-buttons button{
+  width: 120px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid purple;
+  background-color: white;
+  transition: .7s;
+  font-size: 15px;
+}
+
+.profile-edit-buttons button:hover{
+  background-color: rgba(128, 0, 128, 0.619);
+  color: white;
+}
+
+.hidden{
+  opacity: 0;
+  height: 0;
+  width: 0;
+  line-height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
 
 .location-profile{
   width: 20%;
@@ -1296,7 +1398,11 @@ nav ul li:nth-child(5){
 
 .location-dev{
   color: rgba(156, 155, 155, 0.783);
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
+
 
 .location-dev path{
   color: rgba(156, 155, 155, 0.783);

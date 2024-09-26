@@ -9,6 +9,7 @@ import BasketContainer from './Components/Basket/BasketContainer';
 import RegistrationContainer from './Components/Registration/RegistrationContainer';
 import Login from './Components/Login/Login';
 import ProfileContainer from './Components/Profile/ProfileContainer';
+import JsonShortener from './Components/JsonShortener';
 
 function App() {
   return (
