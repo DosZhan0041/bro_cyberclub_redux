@@ -4,7 +4,7 @@ import './../../App.css';
 const Preloader = () => {
   return(
     <div className='preloader'>
-        <img src='./img/enot.gif'></img>
+       <span className="loader"></span>
     </div>
   )
 };

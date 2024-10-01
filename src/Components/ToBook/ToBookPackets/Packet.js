@@ -23,7 +23,6 @@ const Packet = (props) => {
         props.minusOneBasket(props.id)
     }
 
-    console.log(getThisBasket);
     return(
         <div className="packet">
             <div className="packet-container">

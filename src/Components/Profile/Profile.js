@@ -1,6 +1,6 @@
+import { useRef, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import "./../../App.css";
-import { useState, useRef } from "react";
 
 
 let Profile = ({ authUser, ...props }) => {
@@ -62,9 +62,6 @@ let Profile = ({ authUser, ...props }) => {
             userPhone.current.value,
             base64Photo
         );
-
-        
-        
     };
     
 
