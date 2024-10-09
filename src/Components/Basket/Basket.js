@@ -33,7 +33,7 @@ import { useEffect, useState } from 'react';
                     <p className='down_the_tobook' onClick={()=>navigate('/tobook')}> <IoIosArrowBack /> к выбору пакетов</p> 
                     <h1 className='basket_text'>Корзина <span className='basket_mini_text'>(в корзине {basketData && basketData.length ? basketData.length : 0} элементов)</span></h1>
                     {
-                        basketData.length ? 
+                        basketData.length > 0 ? 
                         (basketData.map(packet=>(
                            <CardBasket id={packet.id} name={packet.name} description={packet.description} price={packet.price} img={packet.img} count={packet.count} plusOnebasket={props.plusOnebasket} minusOneBasket={props.minusOneBasket} deletedBasket={props.deletedBasket} key={packet.id}/>
                             ))

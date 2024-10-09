@@ -10,7 +10,7 @@ let ToBookContainer = (props) => {
     useEffect(()=>{
       props.getPreloader(true)
       const timeout = setTimeout(() => {
-        fetch("http://localhost:8080/packets")
+        fetch("http://192.168.0.104:8080/packets")
             .then(function(response) {
                 if (!response.ok) {
                     throw new Error("Ошибка HTTP, статус " + response.status);

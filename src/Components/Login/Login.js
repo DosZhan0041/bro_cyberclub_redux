@@ -21,7 +21,7 @@ let Login = ()=>{
     const [loginError, setLoginError] = useState("")
 
     let signIn=()=>{
-        fetch('http://localhost:8080/login', {
+        fetch('http://192.168.0.104:8080/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -94,10 +94,10 @@ let Login = ()=>{
         <div className="registration">
             <form action='' className="form login">
                 <h1>Login</h1>
-                {loginError&& <div style={{color: 'red', fontSize: '14px'}}>{loginError}</div>}
-                {(emailDirty && emailError) && <div style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '60%'}}>{emailError}</div>}
+                {loginError&& <div className="warning-auth" style={{color: 'red', fontSize: '14px'}}>{loginError}</div>}
+                {(emailDirty && emailError) && <div className="warning-auth" style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '60%'}}>{emailError}</div>}
                 <input type="text" onBlur={blurHandler} value={email} name="email" placeholder="Email" onChange={(e) => emailHandler(e)} />
-                {(passwordDirty &&passwordError) && <div style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '65%', marginLeft: '15px'}}>{passwordError}</div>}
+                {(passwordDirty &&passwordError) && <div className="warning-auth" style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '65%', marginLeft: '15px'}}>{passwordError}</div>}
                 <div className='input_password'>
                         <input className='input_svg' onBlur={ e => blurHandler(e)} value={password} name='password' type={eyes ? "text" : "password"} placeholder="Password" onChange={e => passwordHandler(e)} />
                         {

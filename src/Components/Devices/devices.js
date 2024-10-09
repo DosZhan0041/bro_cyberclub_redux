@@ -31,14 +31,14 @@ let Devices = ()=>{
                         <img src='./img/room.jpeg'></img>
                         <div className='grid-info4'>
                             <img src='./img/arrow-down.png' width='100px'></img>
-                            <p>Место с приятной и расслабляющей обстановкой, легкой фоновой музыкой, при которой можно отдохнуть!</p>
+                            <p>{window.innerWidth < 733 ? ' Цветовая гамма!' : 'Место с приятной и расслабляющей обстановкой, легкой фоновой музыкой, при которой можно отдохнуть!'}</p>
                         </div>
                     </div>
                     <div className='grid-item'>
                         <img src='./img/armchair.png'></img>
                         <div className='grid-info5'>
                             <img src='./img/arrow-second.png' width='100px'></img>
-                            <p>ErgoQuest Zero Gravity Workstation Ultimate</p>
+                            <p>{window.innerWidth < 733 ? 'Ergo Quest' : 'ErgoQuest Zero Gravity Workstation Ultimate'}</p>
                         </div>
                     </div>
                 </div>

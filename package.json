@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "server": "json-server-auth --watch db.json --port 8080",
+    "server": "json-server-auth --host 192.168.0.104 --port 8080 --watch db.json ",
     "dev": "concurrently \"npm run start\" \"npm run server\"",
     "build": "react-scripts build",
     "test": "react-scripts test",

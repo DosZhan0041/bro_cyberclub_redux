@@ -120,7 +120,7 @@ let Registration =(props)=>{
     
 
     let createToUser = ()=>{
-        fetch('http://localhost:8080/register', {
+        fetch('http://192.168.0.104/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -148,9 +148,9 @@ let Registration =(props)=>{
                 <div className="registration_icon"><img src='./img/logo_reg.png'></img></div>
                 <form action='' className="form">
                     <h1>Регистрация</h1>
-                    {(emailDirty && emailError) && <div style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '60%'}}>{emailError}</div>}
+                    {(emailDirty && emailError) && <div className='warning-auth' style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '60%'}}>{emailError}</div>}
                     <input onBlur={ e => blurHandler(e)} value={email} name='email' type="text" placeholder="Email" onChange={e => emailHandler(e)} />
-                    {(passwordDirty &&passwordError) && <div style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '65%', marginLeft: '15px'}}>{passwordError}</div>}
+                    {(passwordDirty &&passwordError) && <div className='warning-auth' style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '65%', marginLeft: '15px'}}>{passwordError}</div>}
                     <div className='input_password'>
                         <input className='input_svg' onBlur={ e => blurHandler(e)} value={password} name='password' type={eyes ? "text" : "password"} placeholder="Password" autoComplete='off' onChange={e => passwordHandler(e)} />
                         {
@@ -165,11 +165,11 @@ let Registration =(props)=>{
                         
                         }
                     </div>
-                    {(nameDirty && nameError) && <div style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '60%'}}>{nameError}</div>}
+                    {(nameDirty && nameError) && <div className='warning-auth' style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '60%'}}>{nameError}</div>}
                     <input onBlur={ e => blurHandler(e)} value={name} type="text" name='name' placeholder="Имя" onChange={e => nameHandler(e) } />
-                    {(surnameDirty && surnameError) && <div style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '60%'}}>{surnameError}</div>}
+                    {(surnameDirty && surnameError) && <div className='warning-auth' style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '60%'}}>{surnameError}</div>}
                     <input onBlur={ e => blurHandler(e)} value={surname} type="text" name='surname' placeholder="Фамилия" onChange={e => surNameHandler(e)} />
-                    {(phoneDirty && phoneError) && <div style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '60%'}}>{phoneError}</div>}
+                    {(phoneDirty && phoneError) && <div className='warning-auth' style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '60%'}}>{phoneError}</div>}
                     <input onBlur={ e => blurHandler(e)} value={phone} type="number" name='phone' placeholder="Номер Телефона" onChange={e => phoneHandler(e)}/>
                     <button type="button" disabled={!isValid} className="btn" onClick={createToUser}>Создать аккаунт</button>
                     <Link to='/login'>У меня есть аккаунт</Link>

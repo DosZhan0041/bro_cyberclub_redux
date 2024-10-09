@@ -125,7 +125,7 @@ let ToBookReducer  = (state=initialState, action)=>{
             userId: userData.id,
             userNumber: userData.phone
             }
-            fetch("http://localhost:8080/orders", {
+            fetch("http://192.168.0.104:8080/orders", {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
