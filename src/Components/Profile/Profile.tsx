@@ -1,27 +1,80 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import "./../../App.css";
 
+interface authUserType {
+    accessToken: string,
+    email: string,
+    id: number,
+    name: string,
+    phone: string,
+    photo: string | null,
+    surname: string,
+    country: null | string
+}
 
-let Profile = ({ authUser, ...props }) => {
+interface ToBookPageType{
+    basket: [],
+    isLoad: boolean,
+    orders: [],
+    packets: []
+}
+
+interface updatedUserType {
+    id: number,
+    user: {
+        name: string,
+        surname: string,
+        phone: string | number,
+        photo: string | null
+    }
+}
+interface usersPageType {
+    userName: null | string,
+    userSurname: null | string,
+    userPhone: null | string,
+    userPhoto: null | string
+}
+
+
+interface propsType{
+
+}
+
+interface FCType{
+    authUser: authUserType,
+    props: propsType,
+    ToBookPage: ToBookPageType,
+    updateNewText:(userName: string, userSurname: string, userPhone: string, userPhoto: string)=>void
+    updateUser: (id: number, updatedUser: updatedUserType)=>void
+    usersPage: usersPageType,
+}
+
+
+
+let Profile: React.FC<FCType> = ({ authUser, ...props })  => {
+
+    console.log(props);
+    
+
     const [edit, setEdit] = useState(false);
     let userData = authUser;
 
-    const filePicker = useRef(null);
-    const userName = useRef();
-    const userSurname = useRef();
-    const userPhone = useRef();
-
+    const filePicker = useRef<HTMLInputElement>(null);
+    const userName = useRef<HTMLInputElement>(null);
+    const userSurname = useRef<HTMLInputElement>(null);
+    const userPhone = useRef<HTMLInputElement>(null);
+    
     const putProfile = () => {
         setEdit(!edit);
     };
-    const fileToBase64 = (file) => {
+    const fileToBase64 = (file: File): Promise<string> => {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = () => {
                 const img = new Image();
-                img.src = reader.result;
+                img.src = reader.result as string;
                 img.onload = () => {
                     // Создаем canvas для изменения размера изображения
                     const canvas = document.createElement('canvas');
@@ -33,12 +86,17 @@ let Profile = ({ authUser, ...props }) => {
                     canvas.width = desiredWidth;
                     canvas.height = desiredHeight;
 
-                    // Рисуем изображение на canvas с новыми размерами
-                    ctx.drawImage(img, 0, 0, desiredWidth, desiredHeight);
+                    // Рисуем изображение на canvas с новыми 
+                    if(ctx){
+                        ctx.drawImage(img, 0, 0, desiredWidth, desiredHeight);
+                        // Преобразуем canvas в Base64
+                        const base64Image = canvas.toDataURL('image/jpeg'); 
+                        resolve(base64Image);
+                    }
+                    else{
+                        reject(new Error('Canvas is null!'))
+                    }
 
-                    // Преобразуем canvas в Base64
-                    const base64Image = canvas.toDataURL('image/jpeg'); 
-                    resolve(base64Image);
                 };
                 img.onerror = error => reject(error);
             };
@@ -47,35 +105,35 @@ let Profile = ({ authUser, ...props }) => {
     };
     
 
-    const updateNewText = async () => {
-        debugger
-        const photoFile = filePicker.current.files[0];
+    const updateNewText = async ():Promise<void> => {
+        const photoFile = filePicker.current?.files?.[0];
         let base64Photo = null;
 
         if (photoFile) {
             base64Photo = await fileToBase64(photoFile);
         }
-
-        props.updateNewText(
-            userName.current.value,
-            userSurname.current.value,
-            userPhone.current.value,
-            base64Photo
-        );
+        if (userName.current && userSurname.current && userPhone.current) {
+            props.updateNewText(
+                userName.current.value,
+                userSurname.current.value,
+                userPhone.current.value,
+                base64Photo as string 
+            );
+        }
     };
     
 
     const updateUser = async () => {
         const updatedUser = {
-            name: userName.current.value || userData.name,  
-            surname: userSurname.current.value || userData.surname,
-            phone: userPhone.current.value || userData.phone,
-            photo: filePicker.current.files[0] 
+            name: userName.current?.value || userData.name,  
+            surname: userSurname.current?.value || userData.surname,
+            phone: userPhone.current?.value || userData.phone,
+            photo: filePicker.current?.files?.[0] 
                 ? await fileToBase64(filePicker.current.files[0]) 
                 : userData.photo  //
         };
     
-        fetch(`http://localhost:8080/users/${userData.id}`, {
+        fetch(`http://192.168.0.102:8080/users/${userData.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -100,7 +158,7 @@ let Profile = ({ authUser, ...props }) => {
     
 
     const handlePhotoChange = () => {
-        filePicker.current.click();
+        filePicker.current?.click();
     };
 
     return (

@@ -43,7 +43,69 @@ let initialState = {
     isLoad: true,
 }
 
-let ToBookReducer  = (state=initialState, action)=>{
+interface Basket{
+    id: number,
+    name: string,
+    price: number, 
+    img: string,
+    count: number,
+}
+
+interface State {
+    packets: Packet[];
+    basket: Basket[];
+    orders: any[]; 
+    isLoad: boolean;
+  }
+
+interface Packet {
+    id: number;
+    name: string;
+    img: string;
+    price: number;
+    description: string;
+    count: number;
+}
+
+interface setPacketAction{
+    type: typeof SET_PACKETS,
+    packets: Packet[]
+}
+
+interface getPreloader{
+    type: typeof GET_PRELOADER,
+    status: boolean
+}
+
+interface addBasket {
+    type: typeof ADD_BASKET,
+    packet: object
+}
+
+interface plusOneBasket {
+    type: typeof PLUS_ONE_BASKET,
+    packetId: number
+}
+
+interface minusOneBasket {
+    type: typeof MINUS_ONE_BASKET,
+    packetId: number
+}
+
+interface deletedBasket {
+    type: typeof DELETE_BASKET,
+    id: number
+}
+
+interface postOrders {
+    type: typeof POST_ORDERS,
+    orderData: []
+}
+
+type Action = 
+    | setPacketAction | getPreloader | addBasket | plusOneBasket | minusOneBasket | deletedBasket | postOrders;
+
+let ToBookReducer  = (state=initialState, action: Action): State=>{
     switch (action.type){
         case SET_PACKETS:{
             return{
@@ -61,14 +123,14 @@ let ToBookReducer  = (state=initialState, action)=>{
             const packetWithCount = { ...action.packet, count: 1 };
             return {
               ...state,
-              basket: state.basket.concat(packetWithCount) 
+              basket: state.basket.concat(packetWithCount as any) 
             };
           }
           case PLUS_ONE_BASKET:{
             debugger
-            const packetToUpdate = state.basket.find(packet => packet.id === action.packetId);
+            const packetToUpdate = state.basket.find((packet:{id: number;}) => packet.id === action.packetId);
             if(packetToUpdate){
-                const updatedBasket = state.basket.map(packet => {
+                const updatedBasket = state.basket.map((packet:{id: number, count: number, name: string, img: string, price: number}) => {
                     if(packet.id === action.packetId) {
                         return {...packet, count: packet.count + 1};
                     }
@@ -86,10 +148,11 @@ let ToBookReducer  = (state=initialState, action)=>{
         
 
         case MINUS_ONE_BASKET:{
-            const packetIndex = state.basket.findIndex(packet => packet.id === action.packetId);
+            const packetIndex = state.basket.findIndex((packet: {id: Number; count: Number}) => packet.id === action.packetId);
             if (packetIndex !== -1) {
-                const updatedBasket = [...state.basket];
-                if (state.basket[packetIndex].count > 1) {
+                let basket: any = state.basket
+                const updatedBasket = [...state.basket] as any;
+                if (basket[packetIndex].count > 1) {
                     updatedBasket[packetIndex].count -= 1;
                 } else {
                     updatedBasket.splice(packetIndex, 1);
@@ -104,7 +167,7 @@ let ToBookReducer  = (state=initialState, action)=>{
         }
 
         case DELETE_BASKET:{
-            let deletedBasket = state.basket.filter(packet=>packet.id != action.id);
+            let deletedBasket = state.basket.filter((packet:{id: Number})=>packet.id != action.id);
             localStorage.setItem('basket', JSON.stringify(deletedBasket));
             return{
                 ...state,
@@ -113,7 +176,7 @@ let ToBookReducer  = (state=initialState, action)=>{
         }
 
         case POST_ORDERS: {
-            const userData = JSON.parse(localStorage.getItem('user'))
+            const userData = JSON.parse(localStorage.getItem('user') as string)
             let today = new Date(),
             date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             let time = String(today.getHours()).padStart(2, '0') + ":" + String(today.getMinutes()).padStart(2, '0') + ":" + String(today.getSeconds()).padStart(2, '0');
@@ -125,7 +188,7 @@ let ToBookReducer  = (state=initialState, action)=>{
             userId: userData.id,
             userNumber: userData.phone
             }
-            fetch("http://192.168.0.104:8080/orders", {
+            fetch("http://192.168.0.102:8080/orders", {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
@@ -155,11 +218,11 @@ let ToBookReducer  = (state=initialState, action)=>{
     }
 }
 
-export const setPacketsActionCreater = (packets) =>({type: SET_PACKETS, packets: packets}) 
-export const addBasketActionCreater = (packet) =>({type: ADD_BASKET, packet:packet})
-export const plusOneBasketActionCreater = (packetId)=>({type: PLUS_ONE_BASKET, packetId:packetId})
-export const minusOneBasketActionCreater = (packetId)=>({type: MINUS_ONE_BASKET, packetId:packetId})
-export const deleteBasketActionCreater = (id)=>({type: DELETE_BASKET, id:id})
-export const postOrdersActionCreater = (orderData)=>({type: POST_ORDERS, orderData:orderData})
-export const getPreloaderActionCreater = (status)=>({type: GET_PRELOADER, status: status})
+export const setPacketsActionCreater = (packets: []) =>({type: SET_PACKETS, packets: packets}) 
+export const addBasketActionCreater = (packet: object) =>({type: ADD_BASKET, packet:packet})
+export const plusOneBasketActionCreater = (packetId: number)=>({type: PLUS_ONE_BASKET, packetId:packetId})
+export const minusOneBasketActionCreater = (packetId: number)=>({type: MINUS_ONE_BASKET, packetId:packetId})
+export const deleteBasketActionCreater = (id: number)=>({type: DELETE_BASKET, id:id})
+export const postOrdersActionCreater = (orderData: [])=>({type: POST_ORDERS, orderData:orderData})
+export const getPreloaderActionCreater = (status: boolean)=>({type: GET_PRELOADER, status: status})
 export default ToBookReducer;

@@ -7,18 +7,19 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 
 
-let Header = (props)=>{
+
+let Header: React.FC = ()=>{
     const [show, setShow] = useState(false)
     const [menu, setMenu] = useState(false)
     const navigate = useNavigate()
-    let currentUser = JSON.parse(localStorage.getItem('user'))
-    let basketData = localStorage.getItem('basket');
+    let currentUser: string | null = JSON.parse(localStorage.getItem('user') as string)
+    let basketData = localStorage.getItem('basket') as string;
     let basket = JSON.parse(basketData);
     let lengthOfBasket = basket ? basket.length : 0;
-    const navRef = useRef(null);
+    const navRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (navRef.current && !navRef.current.contains(event.target)) {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (navRef.current && !navRef.current.contains(event.target as Node)) {
                 setMenu(false);
             }
         };

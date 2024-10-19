@@ -4,10 +4,15 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 
 
-let Login = ()=>{
+interface User {
+    email: string | null,
+    password: string | null
+}
+
+let Login: React.FC = ()=>{
     const navigate = useNavigate();
     const [eyes, setEyes] = useState(false); 
-    const [newUser, setNewUser] = useState({
+    const [newUser, setNewUser] = useState<User>({
         email: null,
         password: null
     });
@@ -21,7 +26,7 @@ let Login = ()=>{
     const [loginError, setLoginError] = useState("")
 
     let signIn=()=>{
-        fetch('http://192.168.0.104:8080/login', {
+        fetch('http://192.168.0.102:8080/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -45,7 +50,7 @@ let Login = ()=>{
             setLoginError(error.message)
         });
     }
-    const blurHandler = (e) => {
+    const blurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
         switch(e.target.name){
             case 'email': 
                 setEmailDirty(true)
@@ -62,7 +67,7 @@ let Login = ()=>{
         }
     },[emailError, passwordError])
     
-    const emailHandler = (e) => {
+    const emailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
         setNewUser(prev => ({...prev, email: e.target.value}))
         const re = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
@@ -75,7 +80,7 @@ let Login = ()=>{
     }
     
 
-    const passwordHandler = (e) => {
+    const passwordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value)
         setNewUser(prev => ({...prev, password: e.target.value}))
         if(e.target.value.length < 6 || e.target.value.length > 15){

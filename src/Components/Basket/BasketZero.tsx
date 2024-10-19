@@ -1,12 +1,19 @@
 import { TbMoodSadDizzy } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 import { IoIosClose } from "react-icons/io";
+import React from "react";
 
 
-let BasketZero = ({show, setShow}) => {
+interface ZeroProps {
+    show: boolean,
+    setShow: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+let BasketZero: React.FC<ZeroProps> = ({show, setShow}) => {
     const navigate = useNavigate()
-    const exitBasket = (e) => {
-        if (e.target.classList.contains('BasketZero') || e.target.closest('.BasketZero')) {
+    const exitBasket = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        const target = e.target as HTMLElement;
+        if (target.classList.contains('BasketZero') || target.closest('.BasketZero')) {
             setShow(false);
         }
     };

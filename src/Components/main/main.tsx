@@ -1,6 +1,6 @@
 import '../../App.css';
 
-let main = () => {
+let main: React.FC = () => {
     return(
         <div className='container'>
             <div className='main'>

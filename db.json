@@ -4,28 +4,28 @@
       "id": 1,
       "name": "2+1 hours",
       "img": "https://i.pinimg.com/originals/82/f3/e1/82f3e1a1cc4f868d3ec3a06e88d2d4b4.jpg",
-      "price": "1200",
+      "price": 1200,
       "description": "Минимум минимум стресса!"
     },
     {
       "id": 2,
       "name": "3+2 hours",
       "img": "https://avatars.mds.yandex.net/i?id=75e829ba6ab8202aca3fb19944f81d5a_l-10329490-images-thumbs&n=13",
-      "price": "1800",
+      "price": 1800,
       "description": "Что-то на геймерском, хэхэ"
     },
     {
       "id": 3,
       "name": "День",
       "img": "https://steamuserimages-a.akamaihd.net/ugc/2505766312233070089/41D0E5B0C832349960AE66B98CFF140E2C16F6CB/?imw=512&amp;imh=288&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true",
-      "price": "2100",
+      "price": 2100,
       "description": "С 8:00 - 18:00, границы не, не слышал"
     },
     {
       "id": 4,
       "name": "Ночь",
       "img": "https://pic.rutubelist.ru/video/2b/34/2b342d9e1e597e76ada0bc8e13a6e34f.jpg",
-      "price": "2800",
+      "price": 2800,
       "description": "С 22:00 - 8:00, день и ночь, день и ночь!"
     }
   ],
@@ -160,6 +160,32 @@
       "userId": 2,
       "userNumber": "87076877121",
       "id": 6
+    },
+    {
+      "orderData": [
+        {
+          "id": 2,
+          "name": "3+2 hours",
+          "price": 1800,
+          "img": "https://avatars.mds.yandex.net/i?id=75e829ba6ab8202aca3fb19944f81d5a_l-10329490-images-thumbs&n=13",
+          "description": "Что-то на геймерском, хэхэ",
+          "count": 2
+        },
+        {
+          "id": 3,
+          "name": "День",
+          "price": 2100,
+          "img": "https://steamuserimages-a.akamaihd.net/ugc/2505766312233070089/41D0E5B0C832349960AE66B98CFF140E2C16F6CB/?imw=512&amp;imh=288&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true",
+          "description": "С 8:00 - 18:00, границы не, не слышал",
+          "count": 1
+        }
+      ],
+      "datetime": "2024-10-19 | 17:29:07",
+      "userName": "Doszhan",
+      "userSurname": "Ilyassov",
+      "userId": 2,
+      "userNumber": "87076877121",
+      "id": 7
     }
   ],
   "users": [

@@ -1,37 +1,58 @@
 import '../../App.css';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
-let Registration =(props)=>{
+interface usersPageType {
+    userName: null | string,
+    userSurname: null | string,
+    userPhone: null | string,
+    userPhoto: null | string
+}
+
+interface propsRegister {
+    usersPage: usersPageType,
+    createUser: (newUser: object) => void    
+}
+
+interface User{
+    email: string | null,
+    password: string | null,
+    name: string | null,
+    surname: string | null,
+    phone: string | null
+}
+
+let Registration:React.FC<propsRegister> = (props)=>{
+    
     const navigate = useNavigate();
     const [eyes, setEyes] = useState(false);
-    const [newUser, setNewUser] = useState({
+    const [newUser, setNewUser] = useState<User>({
         email: null,
         password: null,
         name: null,
         surname: null,
         phone: null
     })
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [name, setName] = useState("")
-    const [surname, setSurname] = useState("")
-    const [phone, setPhone] = useState('')
-    const [emailDirty, setEmailDirty] = useState(false)
-    const [passwordDirty, setPasswordDirty] = useState(false)
-    const [nameDirty, setNameDirty] = useState(false)
-    const [surnameDirty, setSurnameDirty] = useState(false)
-    const [phoneDirty, setPhoneDirty] = useState(false)
-    const [emailError, setEmailError] = useState("Email не может быть пустым")
-    const [passwordError, setPasswordError] = useState("Password не может быть пустым")
-    const [nameError, setNameError] = useState("Имя не может быть пустым")
-    const [surnameError, setSurnameError] = useState("Фамилия не может быть пустым")
-    const [phoneError, setPhoneError] = useState("Номер телефона не может быть пустым")
-    const [isValid, setIsValid] = useState(false)
+    const [email, setEmail] = useState<string | null>("")
+    const [password, setPassword] = useState<string | null>("")
+    const [name, setName] = useState<string | null>("")
+    const [surname, setSurname] = useState<string | null>("")
+    const [phone, setPhone] = useState<string | null>('')
+    const [emailDirty, setEmailDirty] = useState<boolean>(false)
+    const [passwordDirty, setPasswordDirty] = useState<boolean>(false)
+    const [nameDirty, setNameDirty] = useState<boolean>(false)
+    const [surnameDirty, setSurnameDirty] = useState<boolean>(false)
+    const [phoneDirty, setPhoneDirty] = useState<boolean>(false)
+    const [emailError, setEmailError] = useState<string>("Email не может быть пустым")
+    const [passwordError, setPasswordError] = useState<string>("Password не может быть пустым")
+    const [nameError, setNameError] = useState<string>("Имя не может быть пустым")
+    const [surnameError, setSurnameError] = useState<string>("Фамилия не может быть пустым")
+    const [phoneError, setPhoneError] = useState<string>("Номер телефона не может быть пустым")
+    const [isValid, setIsValid] = useState<boolean>(false)
 
-    const blurHandler = (e) => {
+    const blurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
         switch(e.target.name){
             case 'email': 
                 setEmailDirty(true)
@@ -47,7 +68,7 @@ let Registration =(props)=>{
     }
 
 
-    const emailHandler = (e) => {
+    const emailHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
         setNewUser(prev => ({...prev, email: e.target.value}))
         const re = /^\w{7,}@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
@@ -60,7 +81,7 @@ let Registration =(props)=>{
     }
     
 
-    const passwordHandler = (e) => {
+    const passwordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value)
         setNewUser(prev => ({...prev, password: e.target.value}))
         if(e.target.value.length < 6 || e.target.value.length > 15){
@@ -74,7 +95,7 @@ let Registration =(props)=>{
         }
     }
 
-    const nameHandler = (e) => {
+    const nameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNewUser(prev => ({...prev, name: e.target.value}))
         setName(e.target.value)
         if(!e.target.value){
@@ -85,7 +106,7 @@ let Registration =(props)=>{
         }
     }
 
-    const surNameHandler = (e) => {
+    const surNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         if(!e.target.value){
             setSurnameError('Фамилия не должно быть пустым')
         }
@@ -96,7 +117,7 @@ let Registration =(props)=>{
         setNewUser(prev => ({...prev, surname: e.target.value}))
     }
 
-    const phoneHandler = (e) => {
+    const phoneHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPhone(e.target.value)
         setNewUser(prev => ({...prev, phone: e.target.value}))
         const rePhone = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
@@ -120,7 +141,7 @@ let Registration =(props)=>{
     
 
     let createToUser = ()=>{
-        fetch('http://192.168.0.104/register', {
+        fetch('http://192.168.0.102/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -149,10 +170,10 @@ let Registration =(props)=>{
                 <form action='' className="form">
                     <h1>Регистрация</h1>
                     {(emailDirty && emailError) && <div className='warning-auth' style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '60%'}}>{emailError}</div>}
-                    <input onBlur={ e => blurHandler(e)} value={email} name='email' type="text" placeholder="Email" onChange={e => emailHandler(e)} />
+                    <input onBlur={ e => blurHandler(e)} value={email || ''} name='email' type="text" placeholder="Email" onChange={e => emailHandler(e)} />
                     {(passwordDirty &&passwordError) && <div className='warning-auth' style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '65%', marginLeft: '15px'}}>{passwordError}</div>}
                     <div className='input_password'>
-                        <input className='input_svg' onBlur={ e => blurHandler(e)} value={password} name='password' type={eyes ? "text" : "password"} placeholder="Password" autoComplete='off' onChange={e => passwordHandler(e)} />
+                        <input className='input_svg' onBlur={ e => blurHandler(e)} value={password || ''} name='password' type={eyes ? "text" : "password"} placeholder="Password" autoComplete='off' onChange={e => passwordHandler(e)} />
                         {
                             eyes ? (
                                 <span onClick={()=>(setEyes(false))}><FaEye /></span>
@@ -166,11 +187,11 @@ let Registration =(props)=>{
                         }
                     </div>
                     {(nameDirty && nameError) && <div className='warning-auth' style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '60%'}}>{nameError}</div>}
-                    <input onBlur={ e => blurHandler(e)} value={name} type="text" name='name' placeholder="Имя" onChange={e => nameHandler(e) } />
+                    <input onBlur={ e => blurHandler(e)} value={name || ''} type="text" name='name' placeholder="Имя" onChange={e => nameHandler(e) } />
                     {(surnameDirty && surnameError) && <div className='warning-auth' style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '60%'}}>{surnameError}</div>}
-                    <input onBlur={ e => blurHandler(e)} value={surname} type="text" name='surname' placeholder="Фамилия" onChange={e => surNameHandler(e)} />
+                    <input onBlur={ e => blurHandler(e)} value={surname || ''} type="text" name='surname' placeholder="Фамилия" onChange={e => surNameHandler(e)} />
                     {(phoneDirty && phoneError) && <div className='warning-auth' style={{color: 'red', fontSize: '14px', display: 'flex', justifyContent: 'start', width: '60%'}}>{phoneError}</div>}
-                    <input onBlur={ e => blurHandler(e)} value={phone} type="number" name='phone' placeholder="Номер Телефона" onChange={e => phoneHandler(e)}/>
+                    <input onBlur={ e => blurHandler(e)} value={phone || ''} type="number" name='phone' placeholder="Номер Телефона" onChange={e => phoneHandler(e)}/>
                     <button type="button" disabled={!isValid} className="btn" onClick={createToUser}>Создать аккаунт</button>
                     <Link to='/login'>У меня есть аккаунт</Link>
                 </form>

@@ -4,11 +4,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Header from './header';
 
-const HeaderContainer = () => {
+const HeaderContainer: React.FC = () => {
   return <Header />;
 };
 
-const mapStateToProps = (state) => {
+interface ToBookPageState{
+  basket: []
+}
+
+interface RootState{
+  ToBookPage: ToBookPageState
+}
+
+const mapStateToProps = (state: RootState) => {
   return {
     basket: state.ToBookPage.basket 
   };

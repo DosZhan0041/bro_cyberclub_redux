@@ -7,6 +7,7 @@ let reducers = combineReducers({
     ToBookPage: ToBookReducer,
     usersPage: usersReducer,
 });
+export type AppStoreType = ReturnType<typeof reducers>;
 let store = createStore(reducers);
 
 export default store;

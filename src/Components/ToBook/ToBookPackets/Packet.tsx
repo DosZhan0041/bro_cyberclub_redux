@@ -1,7 +1,21 @@
+import React from "react";
 import { CiCircleMinus } from "react-icons/ci";
 import { CiCirclePlus } from "react-icons/ci";
 
-const Packet = (props) => {
+interface propsPacket {
+    minusOneBasket: (packetId: number)=>void;
+    plusOnebasket: (packetId: number)=>void;
+    addBasket: (packet: object)=>void;
+    id: number,
+    img: string,
+    name: string,
+    price: number,
+    description: string,
+    count: number
+}
+
+const Packet: React.FC<propsPacket> = (props) => {
+    
     const getBasket = localStorage.getItem('basket') || '[]';
     let getThisBasket = JSON.parse(getBasket)
     const addToBasket =()=>{
@@ -15,11 +29,11 @@ const Packet = (props) => {
         })
     }
     
-    let plusOneTobasket = ()=>{
+    let plusOneTobasket: React.MouseEventHandler<SVGElement> = ()=>{
         props.plusOnebasket(props.id)
     }
     
-    let minusOneToBasket =()=>{
+    let minusOneToBasket: React.MouseEventHandler<SVGElement> =()=>{
         props.minusOneBasket(props.id)
     }
 
@@ -34,11 +48,11 @@ const Packet = (props) => {
                         <h1>{props.name}</h1>
                         <p>{props.description}</p>
                         {
-                            getThisBasket.findIndex(packet=>packet.id === props.id)>-1 ?
+                            getThisBasket.findIndex((packet:{id: number}) => packet.id === props.id)>-1 ?
                             (
                                 <div className="packet_change">
-                                    <CiCircleMinus onClick={()=>{minusOneToBasket(props.id)}}/>
-                                        {getThisBasket.map((packet) => (
+                                        <span onClick={()=>{minusOneToBasket(props.id as any)}}><CiCircleMinus/></span>
+                                        {getThisBasket.map((packet:{id: number; name: string; description: string; price: number; img: string; count: number;}) => (
                                         packet.id === props.id && (
                                         <div className="packet_change_count_price">
                                             <p>{props.price * packet.count} тг</p>
@@ -48,7 +62,7 @@ const Packet = (props) => {
                                         </div>
                                         )
                                         ))}
-                                    <CiCirclePlus onClick={()=>{plusOneTobasket(props.id)}} />
+                                        <span onClick={()=>{plusOneTobasket(props.id as any)}}><CiCirclePlus/></span>
                                 </div>
                             )
                             :

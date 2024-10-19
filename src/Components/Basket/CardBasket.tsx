@@ -1,18 +1,32 @@
+import React from "react";
 import { CiCircleMinus } from "react-icons/ci";
 import { CiCirclePlus } from "react-icons/ci";
 import { GiCrossedBones } from "react-icons/gi";
 import { PiEyedropperSample } from "react-icons/pi";
 
-let CardBasket = (props) =>{
-    let plusOneTobasket = ()=>{
+interface propsCard {
+    count: number,
+    deletedBasket: (id: number)=>void;
+    minusOneBasket: (id: number)=>void;
+    plusOnebasket: (id: number)=>void;
+    description: string,
+    id: number,
+    img: string,
+    name: string,
+    price: number;
+}
+
+let CardBasket: React.FC<propsCard> = (props) =>{
+    
+    let plusOneTobasket: React.MouseEventHandler<SVGElement> = ()=>{
         props.plusOnebasket(props.id)
     }
 
-    let minusOneToBasket =()=>{
+    let minusOneToBasket: React.MouseEventHandler<SVGElement> =()=>{
         props.minusOneBasket(props.id)
     }
 
-    let deletedToBasket=()=>{
+    let deletedToBasket: React.MouseEventHandler<SVGElement> = ()=>{
         props.deletedBasket((props.id))
     }
     
@@ -28,15 +42,15 @@ let CardBasket = (props) =>{
                 <p>{props.description}</p>
             </div>
             <div className="card_basket_counter">
-                <CiCircleMinus onClick={()=>{minusOneToBasket(props.id)}}/>
+                <span onClick={()=>{minusOneToBasket(props.id as any)}}><CiCircleMinus/></span>
                     <p>{props.count}</p>
-                <CiCirclePlus onClick={()=>{plusOneTobasket(props.id)}} />
+                <span onClick={()=>{plusOneTobasket(props.id as any)}}><CiCirclePlus/></span>
             </div>
             <div className="card_basket_total">
                 <p>{totalPrice} тг</p>
             </div>
             <div className="card_basket_delete">
-                <GiCrossedBones onClick={()=>{deletedToBasket(props.id)}}/>
+                <span onClick={()=>{deletedToBasket(props.id as any)}}><GiCrossedBones/></span>
             </div>
         </div>
     )
