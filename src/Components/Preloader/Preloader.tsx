@@ -1,12 +1,12 @@
-import React from 'react';
-import './../../App.css'; 
+import React from "react";
+import "./../../App.css";
 
 const Preloader: React.FC = () => {
-  return(
-    <div className='preloader'>
-       <span className="loader"></span>
-    </div>
-  )
+  return (
+    <aside>
+      <span className="loader"></span>
+    </aside>
+  );
 };
 
 export default Preloader;
